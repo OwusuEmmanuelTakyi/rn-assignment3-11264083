@@ -8,7 +8,7 @@ const App = () => {
     { key: 'Study', tasks: 12, icon: 'book', image: require('./assets/right.png') },
     { key: 'Code', tasks: 10, icon: 'code', image: require('./assets/left.png') },
     { key: 'Cook', tasks: 8, icon: 'cutlery', image: require('./assets/right.png') },
-    // Add more categories with appropriate icons and images
+   
   ];
 
   const ongoingTasks = [
@@ -20,11 +20,19 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>Hello, Devs</Text>
-        <Text>14 tasks today</Text>
-        <TextInput style={styles.searchInput} placeholder="Search" />
+    <View style={styles.headerContainer}>
+      <Text style={styles.header}>Hello, Devs</Text>
+      <Text>14 tasks today</Text>
+      <View style={styles.searchContainer}>
+        <Icon name="search" size={20} color="gray" style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search"
+          placeholderTextColor="gray"
+        />
+        <Image source={require('./assets/yourImage.jpg')} style={styles.yourImageStyle} />
       </View>
+    </View>
       <ScrollView style={styles.scrollView} horizontal={false}>
         <FlatList
           horizontal={true}
@@ -55,7 +63,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f0e8',
     paddingHorizontal: 20,
     paddingTop: 50,
   },
@@ -63,16 +71,37 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 28, // Increased font size
+    fontWeight: 'bold', // Bold text
   },
-  searchInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+  yourImageStyle: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    margin: 10,
+    marginLeft: 20,
+  },
+  searchContainer: {
+   
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 10,
     paddingHorizontal: 10,
     marginBottom: 20,
+    flexShrink: 1, 
   },
+  searchIcon: {
+    marginRight: 10,
+  },
+  searchInput: {
+    flex: 0,
+    height: 50, 
+    width : 200,
+    borderColor: 'gray',
+    borderWidth: 0, // No border
+  },
+
   scrollView: {
     flex: 1,
   },
@@ -114,8 +143,18 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   taskItem: {
-    paddingVertical: 10,
+    paddingVertical: 30,  
+    backgroundColor: '#f5f5f5', 
+    borderRadius: 10, 
+    padding: 10,  
+    marginBottom: 10,  
+    marginHorizontal: 5,  
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
+
   taskText: {
     fontSize: 16,
   },
